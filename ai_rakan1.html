@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Rakan Niaga — Turning AI into Economic Output for MSMEs</title>
+<link rel="icon" type="image/png" href="https://pepperlabs.my/assets/logos/pepperlabs.png">
+<link rel="shortcut icon" type="image/png" href="https://pepperlabs.my/assets/logos/pepperlabs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #0A0B10;
+  --ink2: rgba(10,11,16,0.62);
+  --ink3: rgba(10,11,16,0.38);
+  --paper: #FFFFFF;
+  --paper2: rgba(255,255,255,0.92);
+  --cobalt: #1A3BCC;
+  --cobalt-light: rgba(26,59,204,0.08);
+  --cobalt-glow: rgba(26,59,204,0.22);
+  --amber: #D4920A;
+  --amber-light: rgba(212,146,10,0.10);
+  --amber-glow: rgba(212,146,10,0.24);
+  --jade: #0E7A5A;
+  --jade-light: rgba(14,122,90,0.10);
+  --glass: rgba(255,255,255,0.80);
+  --glass-strong: rgba(255,255,255,0.95);
+  --glass-border: rgba(230,232,240,0.90);
+  --glass-border2: rgba(200,205,220,0.50);
+  --glass-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --glass-shadow-lg: 0 12px 48px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --blur: saturate(180%) blur(24px);
+  --blur-sm: saturate(150%) blur(14px);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+  /* White theme surface tokens */
+  --surface: #FFFFFF;
+  --surface-2: #F7F8FA;
+  --surface-3: #EEF0F5;
+  --border: rgba(0,0,0,0.07);
+  --border-strong: rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mesh { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(110px); opacity: 0.22; animation: drift 32s ease-in-out infinite alternate; will-change: transform; }
+.b1 { width: 700px; height: 700px; background: radial-gradient(#C5D3FF, transparent 70%); top: -240px; left: -160px; animation-duration: 36s; }
+.b2 { width: 500px; height: 500px; background: radial-gradient(#FAE8B8, transparent 70%); top: 40%; right: -140px; animation-duration: 28s; animation-delay: -12s; }
+.b3 { width: 420px; height: 420px; background: radial-gradient(#B8E6D8, transparent 70%); bottom: 10%; left: 20%; animation-duration: 42s; animation-delay: -18s; }
+.b4 { width: 320px; height: 320px; background: radial-gradient(#DDD4F8, transparent 70%); bottom: -60px; right: 12%; animation-duration: 26s; animation-delay: -7s; }
+@keyframes drift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(28px,-22px) scale(1.06); }
+  66%  { transform: translate(-18px,32px) scale(0.96); }
+  100% { transform: translate(12px,-12px) scale(1.03); }
+}
+
+.noise {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+.z1 { position: relative; z-index: 1; }
+
+.glass { background: var(--glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
+.glass-strong { background: var(--glass-strong); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow-lg); }
+.glass-sm { background: rgba(255,255,255,0.38); backdrop-filter: var(--blur-sm); -webkit-backdrop-filter: var(--blur-sm); border: 1px solid var(--glass-border2); box-shadow: 0 4px 18px rgba(0,0,0,0.05); }
+
+.cursor-glow {
+  position: fixed; width: 480px; height: 480px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(26,59,204,0.10), transparent 60%);
+  transform: translate(-50%,-50%); z-index: 0; transition: opacity 0.3s;
+}
+
+/* ═══════ NAV — console.ilmu.ai inspired ═══════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 300; height: 68px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  transition: all 0.3s ease;
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.99);
+  box-shadow: 0 1px 16px rgba(0,0,0,0.06);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 0;
+  text-decoration: none; color: var(--ink); flex-shrink: 0;
+}
+.nav-logo-img-wrap {
+  height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-img-wrap img {
+  height: 100%; width: auto;
+  object-fit: contain; display: block;
+}
+
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 14px; color: var(--ink2); text-decoration: none;
+  font-weight: 450; transition: color 0.2s; letter-spacing: -0.1px;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.nav-r { display: flex; align-items: center; gap: 6px; }
+
+.lang-sw { display: flex; align-items: center; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 3px; margin-right: 4px; }
+.l-btn { padding: 5px 10px; border: none; background: transparent; font-size: 10.5px; font-weight: 700; font-family: var(--sans); color: var(--ink3); cursor: pointer; border-radius: var(--r-pill); text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.2s ease; }
+.l-btn.active { background: var(--cobalt); color: #fff; box-shadow: 0 2px 6px var(--cobalt-glow); }
+
+.btn-nav-ghost { font-family: var(--sans); font-size: 14px; font-weight: 450; color: var(--ink2); background: transparent; border: 1px solid transparent; cursor: pointer; padding: 8px 16px; border-radius: var(--r-pill); transition: all 0.2s; }
+.btn-nav-ghost:hover { color: var(--ink); background: var(--surface-2); border-color: var(--border); }
+
+.btn-nav-primary { font-family: var(--sans); font-size: 14px; font-weight: 600; color: #fff; background: var(--cobalt); border: none; cursor: pointer; padding: 9px 22px; border-radius: var(--r-pill); box-shadow: 0 2px 10px var(--cobalt-glow); transition: all 0.22s; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+.btn-nav-primary:hover { background: #142FA8; box-shadow: 0 4px 18px var(--cobalt-glow); transform: translateY(-1px); }
+
+/* ═══════ LOGIN OVERLAY ═══════ */
+#login-page {
+  position: fixed; inset: 0; z-index: 500;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+  background: rgba(244,245,240,0.6);
+  backdrop-filter: saturate(180%) blur(36px); -webkit-backdrop-filter: saturate(180%) blur(36px);
+}
+#login-page.active { display: flex; animation: fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes cardIn { from { opacity:0; transform:translateY(28px) scale(0.96); } to { opacity:1; transform:none; } }
+
+.login-card {
+  width: min(460px, 100%);
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: saturate(200%) blur(48px); -webkit-backdrop-filter: saturate(200%) blur(48px);
+  border: 1px solid rgba(255,255,255,0.92);
+  box-shadow: 0 32px 100px rgba(26,59,204,0.16), inset 0 1px 0 rgba(255,255,255,0.98);
+  border-radius: 32px; padding: 44px 40px 38px; position: relative;
+  animation: cardIn .4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.login-close { position: absolute; top: 18px; right: 18px; width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,0.05); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--ink3); transition: all .2s; font-family: var(--sans); }
+.login-close:hover { background: rgba(0,0,0,0.10); color: var(--ink); }
+
+/* ── LOGIN LOGO: large, centred, prominent ── */
+.login-logo {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; margin-bottom: 28px; text-align: center;
+}
+.login-logo-img-wrap {
+  /* White pill card matching pepperlabs.my style */
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px 24px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(26,59,204,0.13), 0 1px 0 rgba(255,255,255,0.95) inset;
+  border: 1px solid rgba(26,59,204,0.10);
+}
+.login-logo-img-wrap img {
+  height: 52px; width: auto; object-fit: contain; display: block;
+}
+.login-logo-tagline {
+  font-family: var(--sans); font-size: 13px; font-weight: 400;
+  color: var(--ink3); letter-spacing: 0.1px;
+}
+
+.auth-tabs { display: flex; background: rgba(0,0,0,0.04); border-radius: 14px; padding: 4px; margin-bottom: 26px; gap: 4px; }
+.auth-tab { flex: 1; padding: 9px; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; font-family: var(--sans); cursor: pointer; transition: all .22s; color: var(--ink3); background: transparent; }
+.auth-tab.active { background: rgba(255,255,255,0.92); color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.auth-panel { display: none; }
+.auth-panel.active { display: block; }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 11.5px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; letter-spacing: 0.2px; }
+.field input { width: 100%; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.10); font-size: 14px; font-family: var(--sans); color: var(--ink); outline: none; transition: all .22s; box-shadow: inset 0 1px 3px rgba(0,0,0,0.04); }
+.field input:focus { border-color: rgba(26,59,204,0.4); box-shadow: 0 0 0 3px rgba(26,59,204,0.10), inset 0 1px 3px rgba(0,0,0,0.04); }
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 44px; }
+.pw-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 14px; color: var(--ink3); padding: 4px; transition: color .2s; }
+.forgot { display: block; text-align: right; font-size: 12px; color: var(--cobalt); text-decoration: none; margin-top: -8px; margin-bottom: 18px; font-weight: 500; }
+.or-divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; font-size: 12px; color: var(--ink3); }
+.or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
+.social-btns { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.btn-social { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 11px; border-radius: 12px; font-size: 13.5px; font-weight: 500; font-family: var(--sans); cursor: pointer; transition: all .22s; border: 1px solid rgba(0,0,0,0.10); background: rgba(255,255,255,0.82); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.btn-social:hover { background: rgba(255,255,255,0.96); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
+.btn-auth { width: 100%; padding: 13px; border-radius: 12px; font-size: 14px; font-weight: 600; font-family: var(--sans); cursor: pointer; border: none; background: linear-gradient(135deg, var(--cobalt), #0A28A0); color: #fff; box-shadow: 0 4px 18px var(--cobalt-glow); transition: all .22s; }
+.btn-auth:hover { box-shadow: 0 8px 30px var(--cobalt-glow); transform: translateY(-1px); }
+.auth-error { display: none; background: rgba(200,30,30,0.07); border: 1px solid rgba(200,30,30,0.18); color: #9B1C1C; padding: 10px 14px; border-radius: 10px; font-size: 12.5px; margin-bottom: 14px; line-height: 1.5; }
+.auth-error.show { display: block; }
+.auth-success { display: none; text-align: center; padding: 20px 0 4px; }
+.auth-success.show { display: block; }
+.success-icon { font-size: 44px; margin-bottom: 12px; }
+.auth-success h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+.auth-success p { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+.terms-note { font-size: 11.5px; color: var(--ink3); text-align: center; margin-top: 16px; line-height: 1.6; }
+.terms-note a { color: var(--cobalt); text-decoration: none; }
+
+/* ═══════ HERO — console.ilmu.ai inspired ═══════ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 68px 0 0;
+  position: relative; z-index: 1;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 0;
+}
+.hero-left {
+  padding: 80px 56px 80px 40px;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.hero-right {
+  padding: 80px 40px 80px 0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+
+/* Hero eyebrow badge */
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cobalt-light);
+  border: 1px solid rgba(26,59,204,0.18);
+  padding: 5px 14px 5px 7px; border-radius: var(--r-pill);
+  margin-bottom: 28px;
+  animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+.eyebrow-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--cobalt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: #fff;
+}
+.eyebrow-text { font-size: 12px; font-weight: 600; color: var(--cobalt); letter-spacing: 0.1px; }
+
+/* Hero headline */
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(44px, 5.5vw, 72px);
+  font-weight: 900; line-height: 1.04;
+  letter-spacing: -2.5px; color: var(--ink);
+  margin-bottom: 22px;
+  animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.08s both;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--cobalt);
+}
+
+.hero-sub {
+  font-size: 16px; color: var(--ink2);
+  max-width: 440px; line-height: 1.8;
+  font-weight: 350; margin-bottom: 36px;
+  animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.16s both;
+}
+
+.hero-actions {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.24s both;
+}
+
+/* Hero trust row */
+.hero-trust {
+  display: flex; align-items: center; gap: 24px;
+  margin-top: 40px;
+  animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.32s both;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.hero-trust-item { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; }
+.hero-trust-num { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--cobalt); letter-spacing: -0.5px; }
+.hero-trust-label { font-size: 11px; color: var(--ink3); font-weight: 400; }
+.hero-trust-divider { width: 1px; height: 32px; background: var(--border); }
+
+/* Hero right: chat card */
+.hero-chat {
+  width: min(420px, 100%); border-radius: 24px;
+  padding: 24px;
+  animation: slideUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.28s both;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+}
+/* Hero right decorative backdrop */
+.hero-right::before {
+  content: '';
+  position: absolute;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,59,204,0.06) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.chat-header { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+.chat-av { width: 36px; height: 36px; border-radius: 50%; background: var(--cobalt-light); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 6px; flex-shrink: 0; border: 1.5px solid rgba(26,59,204,0.18); }
+.chat-av img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.chat-name { font-size: 13.5px; font-weight: 600; }
+.chat-status { font-size: 11px; color: var(--jade); font-weight: 500; display: flex; align-items: center; gap: 4px; }
+.chat-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--jade); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.msg { display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-end; }
+.msg.me { flex-direction: row-reverse; }
+.msg-ico { width: 24px; height: 24px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; overflow: hidden; }
+.msg-ico.bot-ico { background: var(--cobalt-light); border: 1px solid rgba(26,59,204,0.15); padding: 4px; }
+.msg-ico.bot-ico img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.bubble { max-width: 80%; padding: 10px 14px; font-size: 13px; line-height: 1.55; border-radius: 16px; }
+.bubble.bot { background: var(--surface-2); border: 1px solid var(--border); border-bottom-left-radius: 4px; color: var(--ink); }
+.bubble.user { background: var(--cobalt); color: #fff; border-bottom-right-radius: 4px; }
+.typing-bubble { display: flex; gap: 4px; align-items: center; padding: 10px 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; border-bottom-left-radius: 4px; width: fit-content; }
+.typing-bubble span { width: 5px; height: 5px; border-radius: 50%; background: var(--ink3); animation: dots 1.2s ease-in-out infinite; }
+.typing-bubble span:nth-child(2){animation-delay:.2s;}
+.typing-bubble span:nth-child(3){animation-delay:.4s;}
+@keyframes dots{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.trust-bar { padding: 24px 0; background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; position: relative; z-index: 1; }
+.trust-track { display: flex; animation: marquee 32s linear infinite; width: max-content; }
+.trust-track:hover { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.trust-item { display: flex; align-items: center; gap: 10px; padding: 0 44px; white-space: nowrap; border-right: 1px solid var(--border); }
+.t-num { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--cobalt); font-weight: 700; }
+.t-label { font-size: 12.5px; color: var(--ink2); font-weight: 400; }
+
+.btn-primary { background: var(--cobalt); color: #fff; padding: 13px 26px; border-radius: var(--r-pill); font-size: 15px; font-weight: 600; font-family: var(--sans); border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px var(--cobalt-glow); transition: all 0.22s cubic-bezier(0.22,1,0.36,1); letter-spacing: -0.1px; }
+.btn-primary:hover { background: #142FA8; transform: translateY(-2px); box-shadow: 0 8px 26px var(--cobalt-glow); }
+.btn-secondary { background: var(--surface); border: 1.5px solid var(--border-strong); color: var(--ink); padding: 13px 26px; border-radius: var(--r-pill); font-size: 15px; font-weight: 500; font-family: var(--sans); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.22s; }
+.btn-secondary:hover { background: var(--surface-2); transform: translateY(-1px); }
+
+.sec { max-width: 1100px; margin: 0 auto; padding: 100px 28px; position: relative; z-index: 1; }
+.sec-alt { position: relative; z-index: 1; background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 0; }
+.sec-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink3); margin-bottom: 16px; }
+.sec-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: currentColor; border-radius: 2px; }
+.sec-h2 { font-family: var(--serif); font-size: clamp(34px, 4.5vw, 58px); font-weight: 700; letter-spacing: -2px; line-height: 1.06; margin-bottom: 16px; }
+.sec-h2 em { font-style: italic; color: var(--cobalt); }
+.sec-body { font-size: 16px; color: var(--ink2); max-width: 460px; line-height: 1.8; font-weight: 300; margin-bottom: 56px; }
+
+.persona-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.persona-card { border-radius: var(--r-lg); padding: 28px 22px; transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s; cursor: default; text-align: center; }
+.persona-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(26,59,204,0.12); }
+.persona-icon-wrap { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 16px; }
+.persona-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.2px; }
+.persona-card .tag { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: var(--r-pill); margin-bottom: 12px; text-transform: uppercase; }
+.persona-card p { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
+
+/* ═══ AI PERSONA — ilmu.ai feature grid style ═══ */
+.persona-feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.persona-feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px 36px;
+  background: var(--surface);
+  transition: background 0.22s;
+}
+.persona-feat-item:hover { background: var(--surface-2); }
+.persona-feat-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.persona-feat-body { flex: 1; }
+.persona-feat-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px;
+  margin-bottom: 10px;
+}
+.persona-feat-title {
+  font-family: var(--serif);
+  font-size: 20px; font-weight: 700;
+  letter-spacing: -0.5px; line-height: 1.2;
+  color: var(--ink); margin-bottom: 10px;
+}
+.persona-feat-desc {
+  font-size: 14px; color: var(--ink2);
+  line-height: 1.75; font-weight: 350;
+}
+@media(max-width:700px) {
+  .persona-feat-grid { grid-template-columns: 1fr; }
+  .persona-feat-item { padding: 32px 24px; }
+}
+
+.sec-rag { position: relative; z-index: 1; padding: 100px 0 110px; overflow: hidden; }
+.sec-rag.alt { background: linear-gradient(180deg, rgba(26,59,204,0.04) 0%, rgba(255,255,255,0.38) 40%, rgba(212,146,10,0.03) 100%); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.72); border-bottom: 1px solid rgba(255,255,255,0.72); }
+.sec-rag::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(26,59,204,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,59,204,0.04) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; z-index: 0; mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%); }
+
+.arch-tabs { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
+.arch-tab { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--r-pill); border: 1px solid rgba(0,0,0,0.08); background: rgba(255,255,255,0.58); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--ink2); cursor: pointer; transition: all 0.25s; box-shadow: 0 2px 8px rgba(0,0,0,0.05); white-space: nowrap; }
+.arch-tab:hover { background: rgba(255,255,255,0.88); color: var(--ink); transform: translateY(-1px); }
+.arch-tab.active { background: linear-gradient(135deg, var(--cobalt), #0A28A0); color: #fff; border-color: transparent; box-shadow: 0 6px 22px var(--cobalt-glow); }
+.arch-tab-num { width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; background: rgba(255,255,255,0.22); }
+.arch-tab:not(.active) .arch-tab-num { background: var(--cobalt-light); color: var(--cobalt); }
+.arch-panels { position: relative; }
+.arch-panel { display: none; }
+.arch-panel.active { display: block; animation: archFadeIn 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes archFadeIn { from{opacity:0;transform:translateY(18px) scale(0.99)} to{opacity:1;transform:none} }
+.arch-card { border-radius: 28px; background: rgba(255,255,255,0.68); backdrop-filter: saturate(180%) blur(28px); -webkit-backdrop-filter: saturate(180%) blur(28px); border: 1px solid rgba(255,255,255,0.88); box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 20px 60px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.95); overflow: hidden; }
+.arch-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(0,0,0,0.06); background: rgba(255,255,255,0.55); }
+.arch-card-meta { display: flex; align-items: center; gap: 12px; }
+.arch-card-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border-radius: var(--r-pill); font-size: 11px; font-weight: 600; letter-spacing: 0.2px; }
+.arch-card-badge.blue { background: var(--cobalt-light); color: var(--cobalt); border: 1px solid rgba(26,59,204,0.18); }
+.arch-card-badge.green { background: var(--jade-light); color: var(--jade); border: 1px solid rgba(14,122,90,0.2); }
+.arch-card-badge.amber { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(212,146,10,0.22); }
+.arch-card-badge-dot { width: 6px; height: 6px; border-radius: 50%; animation: pulseDot 2.2s ease-in-out infinite; flex-shrink: 0; }
+.badge-dot-blue { background: var(--cobalt); }
+.badge-dot-green { background: var(--jade); }
+.badge-dot-amber { background: var(--amber); }
+@keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(0.7)} }
+.arch-card-title { font-size: 14px; font-weight: 600; letter-spacing: -0.3px; color: var(--ink); }
+.arch-card-subtitle { font-size: 12px; color: var(--ink3); font-weight: 400; margin-top: 2px; }
+.arch-win-dots { display: flex; gap: 6px; }
+.arch-win-dot { width: 10px; height: 10px; border-radius: 50%; opacity: 0.45; }
+.wd-r{background:#FF5F57}.wd-y{background:#FFBD2E}.wd-g{background:#28C840}
+.arch-card-img { padding: 28px; background: linear-gradient(180deg, rgba(248,250,255,0.6) 0%, rgba(255,255,255,0.3) 100%); }
+.arch-card-img img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.10); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s; }
+.arch-card:hover .arch-card-img img { transform: scale(1.01) translateY(-2px); box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 20px 60px rgba(0,0,0,0.14); }
+.arch-card-caption { display: flex; align-items: flex-start; gap: 14px; padding: 20px 28px 24px; border-top: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.40); }
+.arch-cap-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.cap-icon-blue { background: var(--cobalt-light); }
+.cap-icon-green { background: var(--jade-light); }
+.cap-icon-amber { background: var(--amber-light); }
+.arch-cap-body { flex: 1; }
+.arch-cap-label { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: -0.1px; margin-bottom: 3px; }
+.arch-cap-desc { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; max-width: 640px; }
+.arch-nav { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 36px; }
+.arch-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.14); cursor: pointer; transition: all 0.25s; border: none; padding: 0; }
+.arch-dot.active { width: 24px; border-radius: 4px; background: var(--cobalt); }
+
+/* ═══ ARCHITECTURE — ilmu.ai alternating row style ═══ */
+.arch-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  padding: 24px 0;
+}
+.arch-row-flip { direction: rtl; }
+.arch-row-flip > * { direction: ltr; }
+
+.arch-row-visual { position: relative; }
+.arch-row-img-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+.arch-row-img-wrap img {
+  width: 100%; height: auto; display: block;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.arch-row-img-wrap:hover img { transform: scale(1.02); }
+/* Tinted top border accent per item */
+.arch-row-img-blue { border-top: 3px solid var(--cobalt); }
+.arch-row-img-green { border-top: 3px solid var(--jade); }
+.arch-row-img-amber { border-top: 3px solid var(--amber); }
+
+.arch-row-badge {
+  position: absolute; top: 14px; right: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.arch-row-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  display: inline-block;
+  animation: pulseDot 2.2s ease-in-out infinite;
+}
+
+.arch-row-text { display: flex; flex-direction: column; gap: 0; }
+.arch-row-num {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 500;
+  color: var(--ink3); letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.arch-row-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -1px; color: var(--ink);
+  margin-bottom: 8px;
+}
+.arch-row-sub {
+  font-size: 13px; font-weight: 500;
+  color: var(--ink3); margin-bottom: 18px;
+  letter-spacing: 0.1px;
+}
+.arch-row-desc {
+  font-size: 15px; color: var(--ink2);
+  line-height: 1.8; font-weight: 350;
+  margin-bottom: 24px;
+}
+.arch-row-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.arch-row-tag {
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--ink2);
+}
+.arch-row-divider {
+  height: 1px; background: var(--border);
+  margin: 56px 0;
+}
+
+@media(max-width:860px) {
+  .arch-row { grid-template-columns: 1fr; gap: 32px; }
+  .arch-row-flip { direction: ltr; }
+}
+
+.eco-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: center; }
+.eco-center { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.eco-ai-node { width: 100px; height: 100px; border-radius: 28px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 36px rgba(26,59,204,0.20), 0 2px 8px rgba(0,0,0,0.06); border: 2px solid rgba(26,59,204,0.14); padding: 14px; overflow: hidden; }
+.eco-ai-node img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.eco-node-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-top: 4px; }
+.eco-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink3); font-size: 28px; letter-spacing: -4px; }
+.eco-integrations { display: flex; flex-direction: column; gap: 12px; }
+.eco-int-item { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 14px; transition: transform 0.25s, box-shadow 0.25s; }
+.eco-int-item:hover { transform: translateX(4px); box-shadow: 0 8px 24px rgba(26,59,204,0.10); }
+.eco-int-icon { font-size: 22px; flex-shrink: 0; }
+.eco-int-name { font-size: 13.5px; font-weight: 600; }
+.eco-int-desc { font-size: 12px; color: var(--ink3); font-weight: 300; }
+.eco-channels { display: flex; flex-direction: column; gap: 12px; }
+
+/* ═══ NAV — fix dropdown bleed ═══ */
+nav { overflow: visible !important; }
+nav ul, nav li { position: static !important; }
+
+/* ═══ CTA — exact ilmu.ai white card style ═══ */
+.cta-section {
+  position: relative; z-index: 1;
+  background: #e8e8e8;
+  padding: 60px 40px;
+}
+.cta-inner { max-width: 1100px; margin: 0 auto; }
+.cta-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 80px 40px;
+  text-align: center;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.06);
+}
+.cta-headline {
+  font-family: var(--sans);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 600; line-height: 1.25;
+  color: #3a3a3a;
+  margin: 0 0 36px;
+  letter-spacing: -0.5px;
+}
+.cta-btn-primary {
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  color: #fff; background: #1a1a1a;
+  border: none; cursor: pointer;
+  padding: 16px 48px; border-radius: var(--r-pill);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; display: inline-block;
+  transition: background 0.2s;
+}
+.cta-btn-primary:hover { background: #333; }
+@media(max-width:640px) {
+  .cta-section { padding: 40px 20px; }
+  .cta-card { padding: 48px 24px; }
+}
+
+/* ═══ FOOTER — white style ═══ */
+.site-footer {
+  background: #fff;
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
+  text-align: center;
+}
+.ft-main {
+  padding: 80px 40px 60px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+.ft-logo { height: 60px; width: auto; display: block; margin-bottom: 6px; }
+.ft-company-name {
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); letter-spacing: 1px;
+  text-transform: uppercase; margin: 0;
+}
+.ft-bottom-strip {
+  border-top: 1px solid var(--border);
+  padding: 24px 40px;
+}
+.ft-legal {
+  font-size: 11.5px; color: var(--ink3);
+  line-height: 1.8; margin: 0;
+}
+.ft-legal-highlight { color: var(--ink); font-weight: 600; }
+.ft-legal a { color: var(--ink3); text-decoration: none; transition: color 0.18s; }
+.ft-legal a:hover { color: var(--ink); }
+@media(max-width:640px) {
+  .ft-main { padding: 56px 24px 40px; }
+  .ft-bottom-strip { padding: 20px 24px; }
+}
+
+
+@keyframes slideUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:none; } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.hover-float { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s; }
+.hover-float:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(26,59,204,0.12); }
+
+@media(max-width:960px){
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding-top: 68px; max-width: 100%; }
+  .hero-left { padding: 60px 28px 40px; align-items: center; text-align: center; }
+  .hero-sub { max-width: 100%; }
+  .hero-right { padding: 0 28px 60px; }
+  .hero-trust { justify-content: center; }
+  .persona-grid { grid-template-columns: 1fr 1fr; }
+  .eco-grid { grid-template-columns: 1fr; }
+  .eco-arrow { transform: rotate(90deg); }
+  .eco-integrations, .eco-channels { flex-direction: row; flex-wrap: wrap; }
+  .eco-int-item { flex: 1; min-width: 140px; }
+  .ft-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:640px){
+  .persona-grid { grid-template-columns: 1fr; }
+  .ft-grid { grid-template-columns: 1fr; }
+  .ft-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .cta-in { padding: 48px 28px; }
+  .lang-sw { display: none; }
+  .login-card { padding: 32px 24px 28px; }
+  .login-logo-img-wrap img { height: 40px; }
+  .hero-trust { flex-direction: column; align-items: center; gap: 16px; }
+  .hero-trust-divider { width: 40px; height: 1px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursor-glow"></div>
+<div class="mesh">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+<div class="noise"></div>
+
+<!-- ═══════ LOGIN OVERLAY ═══════ -->
+<div id="login-page">
+  <div class="login-card">
+    <button class="login-close" id="login-close" aria-label="Close">✕</button>
+
+    <!-- ENLARGED logo in login/signup — white card with full logo + tagline -->
+    <div class="login-logo">
+      <div class="login-logo-img-wrap">
+        <img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt="Pepper Labs">
+      </div>
+      <span class="login-logo-tagline">AI Rakan Niaga — Your Business Partner</span>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Log In</button>
+      <button class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <!-- Login panel -->
+    <div class="auth-panel active" id="panel-login">
+      <div class="auth-error" id="login-error"></div>
+      <div class="social-btns">
+        <button class="btn-social" onclick="handleSocialAuth('Google')">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+      </div>
+      <div class="or-divider">or continue with email</div>
+      <div class="field"><label>Email address</label><input type="email" id="login-email" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="field"><label>Password</label><div class="pw-wrap"><input type="password" id="login-password" placeholder="Your password" autocomplete="current-password"><button class="pw-toggle" type="button" onclick="togglePw('login-password',this)">👁</button></div></div>
+      <a href="#" class="forgot">Forgot password?</a>
+      <button class="btn-auth" id="btn-login" onclick="handleLogin()">Log In →</button>
+      <p class="terms-note" style="margin-top:18px;">Don't have an account? <a href="#" onclick="switchTab('signup')">Sign up free</a></p>
+    </div>
+
+    <!-- Signup panel -->
+    <div class="auth-panel" id="panel-signup">
+      <div class="auth-error" id="signup-error"></div>
+      <div class="social-btns">
+        <button class="btn-social" onclick="handleSocialAuth('Google')">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Sign up with Google
+        </button>
+      </div>
+      <div class="or-divider">or sign up with email</div>
+      <div class="field"><label>Full name</label><input type="text" id="signup-name" placeholder="Your name"></div>
+      <div class="field"><label>Email address</label><input type="email" id="signup-email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><div class="pw-wrap"><input type="password" id="signup-password" placeholder="At least 8 characters"><button class="pw-toggle" type="button" onclick="togglePw('signup-password',this)">👁</button></div></div>
+      <div class="auth-success" id="signup-success"><div class="success-icon">🎉</div><h3>You're in!</h3><p>Check your email to verify your account.</p></div>
+      <button class="btn-auth" id="btn-signup" onclick="handleSignup()">Create Free Account →</button>
+      <p class="terms-note">By signing up you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.<br>Already have an account? <a href="#" onclick="switchTab('login')">Log in</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <!-- ENLARGED: logo floats at natural height, no boxy container -->
+  <a href="home" class="nav-logo">
+    <div class="nav-logo-img-wrap">
+      <img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt="Pepper Labs">
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" data-i18n="nav-home">Home</a></li>
+    <li><a href="#ai_persona">AI Persona</a></li>
+    <li><a href="#rag-architecture" data-i18n="nav-rag-architecture">Workflow</a></li>
+    <li><a href="#ecosystem">Ecosystem</a></li>
+  </ul>
+  <div class="nav-r">
+    <div class="lang-sw">
+      <button class="l-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+      <button class="l-btn" data-lang="bm" onclick="setLanguage('bm')">BM</button>
+      <button class="l-btn" data-lang="ch" onclick="setLanguage('ch')">CH</button>
+    </div>
+    <button class="btn-nav-primary" onclick="openAuth('signup')" data-i18n="nav-try">CHAT NOW</button>
+  </div>
+</nav>
+
+<!-- ═══════ HERO — console.ilmu.ai inspired split layout ═══════ -->
+<div style="background: var(--surface); position: relative; z-index: 1; border-bottom: 1px solid var(--border);">
+<section class="hero" id="home">
+
+  <!-- LEFT: Headline + CTA -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dot">✦</div>
+      <span class="eyebrow-text" data-i18n="hero-badge">Built for Malaysian MSMEs · No training required</span>
+    </div>
+
+    <h1 class="hero-headline" data-i18n="hero-title">
+      Your business,<br>always <em>open</em>
+    </h1>
+
+    <p class="hero-sub" data-i18n="hero-sub">
+      97% of Malaysian businesses are MSMEs — busy surviving, not scaling. AI Rakan Niaga changes that. Sell more, run operations, and stay compliant. Just chat.
+    </p>
+
+    <div class="hero-actions">
+      <a href="http://127.0.0.1:8000"><button class="btn-primary" data-i18n="hero-btn1">CHAT NOW</button></a>
+      <button class="btn-secondary" onclick="openAuth('login')">See how it works</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: Chat preview -->
+  <div class="hero-right">
+    <div class="hero-chat">
+      <div class="chat-header">
+        <div class="chat-av">
+          <img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt="Pepper Labs">
+        </div>
+        <div>
+          <div class="chat-name" data-i18n="chat-name">AI Rakan Niaga</div>
+          <div class="chat-status" data-i18n="chat-status">Online · 24/7</div>
+        </div>
+      </div>
+      <div class="msg">
+        <div class="msg-ico bot-ico"><img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt=""></div>
+        <div class="bubble bot" data-i18n="chat-msg1">Selamat datang! Boleh saya bantu anda hari ini? 😊</div>
+      </div>
+      <div class="msg me">
+        <div class="msg-ico">👤</div>
+        <div class="bubble user" data-i18n="chat-msg2">Ada baju kurung size M tak? Berapa harga?</div>
+      </div>
+      <div class="msg">
+        <div class="msg-ico bot-ico"><img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt=""></div>
+        <div class="bubble bot" data-i18n="chat-msg3">Ada! 3 warna — Biru Malam, Merah Marun, Krim. Harga <b>RM89</b>. Nak tengok gambar? 👗</div>
+      </div>
+      <div class="msg">
+        <div class="msg-ico bot-ico"><img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt=""></div>
+        <div class="typing-bubble"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+
+<!-- ═══════ AI PERSONAS — ilmu.ai "Malaysia's First AI Assistant" style ═══════ -->
+<section id="ai_persona" style="position:relative;z-index:1;background:var(--surface);padding:100px 0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 40px;">
+
+    <!-- Section header — centred like ilmu.ai -->
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 72px;">
+      <span class="sec-eyebrow">AI Persona</span>
+      <h2 class="sec-h2">Malaysia's First <em>Business AI</em> Assistant</h2>
+      <p class="sec-body" style="margin:0 auto;">An AI assistant that understands your business, speaks your language, and works across every function — no training required, just chat.</p>
+    </div>
+
+    <!-- 2×2 feature grid — ilmu.ai style: icon left, text right, spacious -->
+    <div class="persona-feat-grid reveal">
+
+      <div class="persona-feat-item">
+        <div class="persona-feat-icon" style="background:var(--cobalt-light);color:var(--cobalt);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="persona-feat-body">
+          <div class="persona-feat-tag" style="color:var(--cobalt);background:var(--cobalt-light);">Sales</div>
+          <h3 class="persona-feat-title">Rakan Jualan</h3>
+          <p class="persona-feat-desc">Answers product questions, handles orders, sends follow-ups, and converts leads 24/7 — even at 2 AM. Never misses a sale.</p>
+        </div>
+      </div>
+
+      <div class="persona-feat-item">
+        <div class="persona-feat-icon" style="background:rgba(212,146,10,0.10);color:var(--amber);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        </div>
+        <div class="persona-feat-body">
+          <div class="persona-feat-tag" style="color:#A85A00;background:rgba(212,146,10,0.10);">Operations</div>
+          <h3 class="persona-feat-title">Rakan Operasi</h3>
+          <p class="persona-feat-desc">Tracks inventory, manages bookings, optimises costs, and automates routine operational tasks — keeping your business running smoothly.</p>
+        </div>
+      </div>
+
+      <div class="persona-feat-item">
+        <div class="persona-feat-icon" style="background:var(--jade-light);color:var(--jade);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="persona-feat-body">
+          <div class="persona-feat-tag" style="color:var(--jade);background:var(--jade-light);">Finance</div>
+          <h3 class="persona-feat-title">Rakan Kewangan</h3>
+          <p class="persona-feat-desc">Generates financial summaries, tracks revenue, and provides plain-language business performance insights to help you make smarter decisions.</p>
+        </div>
+      </div>
+
+      <div class="persona-feat-item">
+        <div class="persona-feat-icon" style="background:rgba(107,33,168,0.08);color:#6B21A8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="persona-feat-body">
+          <div class="persona-feat-tag" style="color:#6B21A8;background:rgba(107,33,168,0.08);">Compliance</div>
+          <h3 class="persona-feat-title">Rakan Pematuhan</h3>
+          <p class="persona-feat-desc">Navigates SST, e-Invoicing (LHDN), and SSM renewals. Keeps your business legally compliant without the confusion.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ RAG ARCHITECTURE — ilmu.ai alternating section style ═══════ -->
+<section id="rag-architecture" style="position:relative;z-index:1;background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 40px;">
+
+    <!-- Section header -->
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 80px;">
+      <span class="sec-eyebrow">Technical Architecture</span>
+      <h2 class="sec-h2">Your 24/7 Business Assistant,<br><em>Decoded</em></h2>
+      <p class="sec-body" style="margin:0 auto;">A look under the hood. Our Advanced Insight Engine uses the RAG pipeline, powered by DeepSeek-R1, to convert your business data into grounded, intelligent actions.</p>
+    </div>
+
+    <!-- ITEM 1 — image left, text right -->
+    <div class="arch-row reveal">
+      <div class="arch-row-visual">
+        <div class="arch-row-img-wrap arch-row-img-blue">
+          <img src="CX Architecture.png" alt="CX Architecture" loading="lazy">
+          <div class="arch-row-badge" style="background:var(--cobalt);color:#fff;">
+            <span class="arch-row-badge-dot" style="background:rgba(255,255,255,0.5);"></span>Live
+          </div>
+        </div>
+      </div>
+      <div class="arch-row-text">
+        <div class="arch-row-num">01</div>
+        <h3 class="arch-row-title">CX Architecture</h3>
+        <p class="arch-row-sub">Customer Experience Layer</p>
+        <p class="arch-row-desc">Maps the full journey from customer touchpoints through the AI orchestration layer to business outcomes — orders, bookings, and CRM updates. End-to-end conversation flow and channel integrations, fully connected.</p>
+        <div class="arch-row-tags">
+          <span class="arch-row-tag">WhatsApp</span>
+          <span class="arch-row-tag">Telegram</span>
+          <span class="arch-row-tag">Web Widget</span>
+          <span class="arch-row-tag">CRM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row-divider"></div>
+
+    <!-- ITEM 2 — text left, image right -->
+    <div class="arch-row arch-row-flip reveal">
+      <div class="arch-row-visual">
+        <div class="arch-row-img-wrap arch-row-img-green">
+          <img src="Technical RAG.png" alt="Technical RAG Pipeline" loading="lazy">
+          <div class="arch-row-badge" style="background:var(--jade);color:#fff;">
+            <span class="arch-row-badge-dot" style="background:rgba(255,255,255,0.5);"></span>DeepSeek-R1
+          </div>
+        </div>
+      </div>
+      <div class="arch-row-text">
+        <div class="arch-row-num">02</div>
+        <h3 class="arch-row-title">RAG Pipeline</h3>
+        <p class="arch-row-sub">Retrieval-Augmented Generation Engine</p>
+        <p class="arch-row-desc">Your uploaded product catalogues and FAQs are chunked, embedded, and stored in a vector database. At runtime, semantically relevant chunks are retrieved and injected into the LLM context for grounded, accurate responses — never hallucinated.</p>
+        <div class="arch-row-tags">
+          <span class="arch-row-tag">Vector DB</span>
+          <span class="arch-row-tag">Embeddings</span>
+          <span class="arch-row-tag">Semantic Search</span>
+          <span class="arch-row-tag">DeepSeek-R1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row-divider"></div>
+
+    <!-- ITEM 3 — image left, text right -->
+    <div class="arch-row reveal">
+      <div class="arch-row-visual">
+        <div class="arch-row-img-wrap arch-row-img-amber">
+          <img src="Technical LLMOps.png" alt="LLMOps Infrastructure" loading="lazy">
+          <div class="arch-row-badge" style="background:var(--amber);color:#fff;">
+            <span class="arch-row-badge-dot" style="background:rgba(255,255,255,0.5);"></span>Production
+          </div>
+        </div>
+      </div>
+      <div class="arch-row-text">
+        <div class="arch-row-num">03</div>
+        <h3 class="arch-row-title">LLMOps Infrastructure</h3>
+        <p class="arch-row-sub">Production Operations Stack</p>
+        <p class="arch-row-desc">Covers the full operational lifecycle — model versioning, A/B evaluation, latency monitoring, guardrails, and continuous improvement loops that keep your AI accurate and on-brand over time. Enterprise-grade reliability, always.</p>
+        <div class="arch-row-tags">
+          <span class="arch-row-tag">Monitoring</span>
+          <span class="arch-row-tag">Guardrails</span>
+          <span class="arch-row-tag">A/B Evaluation</span>
+          <span class="arch-row-tag">Versioning</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ ECOSYSTEM ═══════ -->
+<section id="ecosystem">
+  <div class="sec">
+    <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto 52px;">
+      <span class="sec-eyebrow">Ecosystem Integration</span>
+      <h2 class="sec-h2">Connected to every<br><em>critical system</em></h2>
+      <p class="sec-body" style="margin:0 auto;">AI Rakan Niaga operates via WhatsApp — the app every Malaysian already uses — connected to the full regulatory and commerce ecosystem.</p>
+    </div>
+    <div class="eco-grid reveal">
+      <div class="eco-channels">
+        <div class="eco-int-item glass-sm hover-float">
+          <div class="eco-int-icon">🌐</div>
+          <div><div class="eco-int-name">Web Widget</div><div class="eco-int-desc">Embed on any website</div></div>
+        </div>
+      </div>
+      <div class="eco-center">
+        <div class="eco-ai-node">
+          <img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt="Pepper Labs — AI Rakan Niaga">
+        </div>
+        <div class="eco-node-label">AI Rakan Niaga</div>
+        <p style="font-size:12px;color:var(--ink3);font-weight:300;margin-top:4px;">Powered by DeepSeek-R1 + RAG</p>
+        <div class="eco-arrow" style="margin-top:12px;">⇄</div>
+      </div>
+      <div class="eco-integrations">
+        <div class="eco-int-item glass-sm hover-float">
+          <div class="eco-int-icon">🏛️</div>
+          <div><div class="eco-int-name">SSM</div><div class="eco-int-desc">Companies Commission of Malaysia</div></div>
+        </div>
+        <div class="eco-int-item glass-sm hover-float">
+          <div class="eco-int-icon">📋</div>
+          <div><div class="eco-int-name">LHDN</div><div class="eco-int-desc">e-Invoicing & tax compliance</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA — ilmu.ai "Jom, get started" style ═══════ -->
+<section class="cta-section reveal">
+  <div class="cta-inner">
+    <div class="cta-card">
+      <h2 class="cta-headline">Jom, get started<br>with AI Rakan Niaga!</h2>
+      <a href="http://127.0.0.1:8000" class="cta-btn-primary">CHAT NOW</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER — white style -->
+<footer class="site-footer">
+  <div class="ft-main">
+    <img src="https://pepperlabs.my/assets/logos/pepperlabs.png" alt="Pepper Labs" class="ft-logo">
+    <p class="ft-company-name">PEPPER LABS</p>
+    <p class="ft-legal" style="margin-top:8px;"><span class="ft-legal-highlight">PEPPER LABS SDN BHD</span> | A-3-7, Viva Residency (Commercial), Off Jalan Ipoh, 51200, Kuala Lumpur | General line: <a href="tel:+60163504840">+60 16-350 4840</a> | Email: <a href="mailto:info@pepperlabs.my">info@pepperlabs.my</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const glow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('vis');
+    else io.observe(el);
+  });
+
+  const loginPage = document.getElementById('login-page');
+  function openAuth(tab='login') { loginPage.classList.add('active'); document.body.style.overflow = 'hidden'; switchTab(tab); }
+  window.openAuth = openAuth;
+  function closeAuth() {
+    loginPage.classList.remove('active'); document.body.style.overflow = '';
+    ['login-email','login-password','signup-name','signup-email','signup-password'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+    document.getElementById('login-error').classList.remove('show');
+    document.getElementById('signup-error').classList.remove('show');
+    document.getElementById('signup-success').classList.remove('show');
+    document.getElementById('btn-signup').style.display = 'block';
+  }
+  window.closeAuth = closeAuth;
+  document.getElementById('login-close').addEventListener('click', closeAuth);
+  loginPage.addEventListener('click', e => { if(e.target === loginPage) closeAuth(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && loginPage.classList.contains('active')) closeAuth(); });
+
+  function switchTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+    document.getElementById(`panel-${tab}`).classList.add('active');
+  }
+  window.switchTab = switchTab;
+  document.querySelectorAll('.auth-tab').forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+
+  function togglePw(id, btn) { const i = document.getElementById(id); i.type = i.type === 'password' ? 'text' : 'password'; btn.textContent = i.type === 'password' ? '👁' : '🙈'; }
+  window.togglePw = togglePw;
+
+  function showError(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); }
+  function clearError(id) { document.getElementById(id).classList.remove('show'); }
+  function isEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+  function handleLogin() {
+    clearError('login-error');
+    const email = document.getElementById('login-email').value.trim();
+    const pw = document.getElementById('login-password').value;
+    if (!email) return showError('login-error','Please enter your email address.');
+    if (!isEmail(email)) return showError('login-error','That email doesn\'t look right.');
+    if (!pw) return showError('login-error','Please enter your password.');
+    if (pw.length < 6) return showError('login-error','Password must be at least 6 characters.');
+    const btn = document.getElementById('btn-login');
+    btn.textContent = 'Logging in…'; btn.classList.add('loading');
+    setTimeout(() => { btn.textContent = 'Log In →'; btn.classList.remove('loading'); showError('login-error','No account found with that email. Try signing up instead.'); }, 1400);
+  }
+  window.handleLogin = handleLogin;
+
+  function handleSignup() {
+    clearError('signup-error');
+    const name = document.getElementById('signup-name').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const pw = document.getElementById('signup-password').value;
+    if (!name) return showError('signup-error','Please enter your name.');
+    if (!email) return showError('signup-error','Please enter your email address.');
+    if (!isEmail(email)) return showError('signup-error','That email doesn\'t look right.');
+    if (!pw) return showError('signup-error','Please choose a password.');
+    if (pw.length < 8) return showError('signup-error','Password must be at least 8 characters long.');
+    const btn = document.getElementById('btn-signup');
+    btn.textContent = 'Creating account…'; btn.classList.add('loading');
+    setTimeout(() => { btn.style.display='none'; document.getElementById('signup-success').classList.add('show'); }, 1500);
+  }
+  window.handleSignup = handleSignup;
+
+  function handleSocialAuth(p) { alert(`${p} sign-in coming soon!`); }
+  window.handleSocialAuth = handleSocialAuth;
+});
+
+function switchArch(idx) {
+  document.querySelectorAll('.arch-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  document.querySelectorAll('.arch-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.arch-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+}
+window.switchArch = switchArch;
+
+const translations = {
+  en: {
+    "nav-home":"Home","nav-rag-architecture":"Workflow","nav-login":"Log In","nav-try":"Try Free →",
+    "hero-badge":"Built for Malaysian MSMEs · No training required",
+    "hero-title":"Your business,<br>always <em>open</em>",
+    "hero-sub":"97% of Malaysian businesses are MSMEs — busy surviving, not scaling. AI Rakan Niaga changes that. Sell more, run operations, and stay compliant. Just chat.",
+    "hero-btn1":"CHAT NOW",
+    "chat-name":"AI Rakan Niaga","chat-status":"Online · 24/7",
+    "chat-msg1":"Selamat datang! Boleh saya bantu anda hari ini? 😊",
+    "chat-msg2":"Ada baju kurung size M tak? Berapa harga?",
+    "chat-msg3":"Ada! 3 warna — Biru Malam, Merah Marun, Krim. Harga <b>RM89</b>. Nak tengok gambar? 👗",
+    "trust-4":"Never misses a customer","trust-5":"To set up, no coding needed",
+    "cta-title":"Ready to stop<br><em>missing customers?</em>",
+    "cta-sub":"Join 5,200+ Malaysian businesses. Free for 14 days — no card needed.",
+    "cta-btn1":"CHAT NOW",
+    "footer-addr":"A-3-7, Viva Residency (Commercial), Off Jalan Ipoh, 51200, Kuala Lumpur.",
+    "footer-company":"Company","footer-who":"Who We Are","footer-expertise":"Our Expertise",
+    "footer-microsoft":"Microsoft","footer-campaign":"AI Campaign","footer-dapur":"Dapur Digital","footer-impact":"Our Impact",
+    "footer-support":"Support","footer-faq":"FAQ","footer-work":"Work With Us",
+    "footer-copy":"© 2026 Pepper Labs. All rights reserved."
+  },
+  bm: {
+    "nav-home":"Utama","nav-rag-architecture":"Aliran Kerja","nav-login":"Log Masuk","nav-try":"Percubaan Percuma →",
+    "hero-badge":"Dibina untuk MSME Malaysia · Tiada latihan diperlukan",
+    "hero-title":"Perniagaan anda,<br>sentiasa <em>buka</em>",
+    "hero-sub":"97% perniagaan Malaysia adalah MSME — sibuk bertahan, bukan berkembang. AI Rakan Niaga mengubah itu. Jual lebih banyak, urus operasi, dan kekal patuh. Cuma chat.",
+    "hero-btn1":"Mulai Percuma →",
+    "chat-name":"AI Rakan Niaga","chat-status":"Dalam talian · 24/7",
+    "chat-msg1":"Selamat datang! Boleh saya bantu anda hari ini? 😊",
+    "chat-msg2":"Ada baju kurung size M tak? Berapa harga?",
+    "chat-msg3":"Ada! 3 warna — Biru Malam, Merah Marun, Krim. Harga <b>RM89</b>. Nak tengok gambar? 👗",
+    "trust-4":"Tidak pernah kehilangan pelanggan","trust-5":"Untuk menyiapkan, tanpa kod",
+    "cta-title":"Bersedia untuk berhenti<br><em>kehilangan pelanggan?</em>",
+    "cta-sub":"Sertai 5,200+ perniagaan Malaysia. Percuma 14 hari — tiada kad diperlukan.",
+    "cta-btn1":"Mulai Sekarang →",
+    "footer-addr":"A-3-7, Viva Residency (Commercial), Off Jalan Ipoh, 51200, Kuala Lumpur.",
+    "footer-company":"Syarikat","footer-who":"Siapa Kami","footer-expertise":"Kepakaran Kami",
+    "footer-microsoft":"Microsoft","footer-campaign":"Kempen AI","footer-dapur":"Dapur Digital","footer-impact":"Impak Kami",
+    "footer-support":"Sokongan","footer-faq":"Soalan Lazim","footer-work":"Bekerja Bersama Kami",
+    "footer-copy":"© 2026 Pepper Labs. Hak cipta terpelihara."
+  },
+  ch: {
+    "nav-home":"首页","nav-rag-architecture":"工作流程","nav-login":"登录","nav-try":"免费试试 →",
+    "hero-badge":"为马来西亚中小企业打造 · 无需培训",
+    "hero-title":"您的业务，<br>始终<em>开放</em>",
+    "hero-sub":"97%的马来西亚企业是中小企业——忙于生存，无暇扩张。AI Rakan Niaga改变这一切。销售更多、运营更顺、合规无忧。只需聊天。",
+    "hero-btn1":"开始免费 →",
+    "chat-name":"AI Rakan Niaga","chat-status":"在线 · 24/7",
+    "chat-msg1":"欢迎！我今天可以帮你吗？😊",
+    "chat-msg2":"有 M 号的库隆克吗？价格多少？",
+    "chat-msg3":"有！3 种颜色 — 深蓝、栗色、奶油色。价格 <b>RM89</b>。想看图片吗？👗",
+    "trust-4":"永远不会错过客户","trust-5":"设置，无需编码",
+    "cta-title":"准备停止<br><em>失去客户？</em>",
+    "cta-sub":"加入 5,200 多家马来西亚企业。免费 14 天 — 无需卡。",
+    "cta-btn1":"立即开始 →",
+    "footer-addr":"A-3-7, Viva Residency (Commercial), Off Jalan Ipoh, 51200, Kuala Lumpur.",
+    "footer-company":"公司","footer-who":"关于我们","footer-expertise":"我们的专业",
+    "footer-microsoft":"微软","footer-campaign":"AI 活动","footer-dapur":"Dapur Digital","footer-impact":"我们的影响",
+    "footer-support":"支持","footer-faq":"常见问题","footer-work":"与我们合作",
+    "footer-copy":"© 2026 Pepper Labs. 保留所有权利。"
+  }
+};
+
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  localStorage.setItem('ai-rakan-lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+  });
+  document.querySelectorAll('.l-btn').forEach(btn => btn.classList.remove('active'));
+  const ab = document.querySelector(`.l-btn[data-lang="${lang}"]`);
+  if (ab) ab.classList.add('active');
+}
+window.setLanguage = setLanguage;
+
+(function() {
+  const saved = localStorage.getItem('ai-rakan-lang');
+  if (saved && saved !== 'en') setLanguage(saved);
+})();
+</script>
+</body>
+</html>
