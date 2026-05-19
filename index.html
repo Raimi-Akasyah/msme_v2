@@ -274,6 +274,7 @@ nav.scrolled {
   font-size: 16px; color: var(--ink2);
   max-width: 440px; line-height: 1.8;
   font-weight: 350; margin-bottom: 36px;
+  text-align: justify;
   animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.16s both;
 }
 
@@ -355,7 +356,7 @@ nav.scrolled {
 .sec-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: currentColor; border-radius: 2px; }
 .sec-h2 { font-family: var(--sans); font-size: clamp(34px, 4.5vw, 58px); font-weight: 700; letter-spacing: -2px; line-height: 1.06; margin-bottom: 16px; }
 .sec-h2 em { font-style: italic; color: var(--cobalt); }
-.sec-body { font-size: 16px; color: var(--ink2); max-width: 460px; line-height: 1.8; font-weight: 300; margin-bottom: 56px; }
+.sec-body { font-size: 16px; color: var(--ink2); max-width: 460px; line-height: 1.8; font-weight: 300; margin-bottom: 56px; text-align: justify; }
 
 .persona-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .persona-card { border-radius: var(--r-lg); padding: 28px 22px; transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s; cursor: default; text-align: center; }
@@ -363,7 +364,7 @@ nav.scrolled {
 .persona-icon-wrap { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 16px; }
 .persona-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.2px; }
 .persona-card .tag { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: var(--r-pill); margin-bottom: 12px; text-transform: uppercase; }
-.persona-card p { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
+.persona-card p { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; text-align: justify; }
 
 /* ═══ AI PERSONA — ilmu.ai feature grid style ═══ */
 .persona-feat-grid {
@@ -407,6 +408,7 @@ nav.scrolled {
 .persona-feat-desc {
   font-size: 14px; color: var(--ink2);
   line-height: 1.75; font-weight: 350;
+  text-align: justify;
 }
 @media(max-width:700px) {
   .persona-feat-grid { grid-template-columns: 1fr; }
@@ -454,7 +456,7 @@ nav.scrolled {
 .cap-icon-amber { background: var(--amber-light); }
 .arch-cap-body { flex: 1; }
 .arch-cap-label { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: -0.1px; margin-bottom: 3px; }
-.arch-cap-desc { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; max-width: 640px; }
+.arch-cap-desc { font-size: 12.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; max-width: 640px; text-align: justify; }
 .arch-nav { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 36px; }
 .arch-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.14); cursor: pointer; transition: all 0.25s; border: none; padding: 0; }
 .arch-dot.active { width: 24px; border-radius: 4px; background: var(--cobalt); }
@@ -525,6 +527,7 @@ nav.scrolled {
   font-size: 15px; color: var(--ink2);
   line-height: 1.8; font-weight: 350;
   margin-bottom: 24px;
+  text-align: justify;
 }
 .arch-row-tags {
   display: flex; flex-wrap: wrap; gap: 8px;
@@ -689,7 +692,7 @@ nav.scrolled {
 
 .eco-card-body { flex: 1; min-width: 0; position: relative; z-index: 1; }
 .eco-card-name { font-size: 13.5px; font-weight: 700; color: var(--ink); letter-spacing: -0.2px; margin-bottom: 2px; }
-.eco-card-desc { font-size: 12px; color: var(--ink3); font-weight: 350; line-height: 1.55; }
+.eco-card-desc { font-size: 12px; color: var(--ink3); font-weight: 350; line-height: 1.55; text-align: justify; }
 .eco-card-tag {
   display: inline-block; margin-top: 7px;
   font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
