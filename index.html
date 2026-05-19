@@ -410,10 +410,7 @@ nav.scrolled {
   line-height: 1.75; font-weight: 350;
   text-align: justify;
 }
-@media(max-width:700px) {
-  .persona-feat-grid { grid-template-columns: 1fr; }
-  .persona-feat-item { padding: 32px 24px; }
-}
+
 
 .sec-rag { position: relative; z-index: 1; padding: 100px 0 110px; overflow: hidden; }
 .sec-rag.alt { background: linear-gradient(180deg, rgba(26,59,204,0.04) 0%, rgba(255,255,255,0.38) 40%, rgba(212,146,10,0.03) 100%); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.72); border-bottom: 1px solid rgba(255,255,255,0.72); }
@@ -545,10 +542,7 @@ nav.scrolled {
   margin: 56px 0;
 }
 
-@media(max-width:860px) {
-  .arch-row { grid-template-columns: 1fr; gap: 32px; }
-  .arch-row-flip { direction: ltr; }
-}
+
 
 /* ═══ ECOSYSTEM — redesigned ═══ */
 .eco-section {
@@ -725,18 +719,6 @@ nav.scrolled {
 }
 .eco-stat-label { font-size: 13px; color: var(--ink2); font-weight: 400; margin-top: 4px; }
 
-@media(max-width:900px) {
-  .eco-hub { grid-template-columns: 1fr; gap: 32px; }
-  .eco-col-left, .eco-col-right { padding: 0; }
-  .eco-connector { display: none; }
-  .eco-hub-center { order: -1; }
-  .eco-stats { grid-template-columns: 1fr 1fr; }
-  .eco-stats .eco-stat:last-child { grid-column: 1 / -1; }
-}
-@media(max-width:600px) {
-  .eco-stats { grid-template-columns: 1fr; }
-  .eco-stats .eco-stat:last-child { grid-column: auto; }
-}
 
 /* Keep old classes for mobile fallback compatibility */
 .eco-grid { display: none; }
@@ -896,30 +878,140 @@ nav ul, nav li { position: static !important; }
 .hover-float { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s; }
 .hover-float:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(26,59,204,0.12); }
 
+/* ═══════════════════════════════════
+   RESPONSIVE — TABLET (≤960px)
+═══════════════════════════════════ */
 @media(max-width:960px){
-  nav { padding: 0 24px; }
+  /* Nav */
+  nav { padding: 0 20px; height: 64px; }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; padding-top: 68px; max-width: 100%; }
-  .hero-left { padding: 60px 28px 40px; align-items: center; text-align: center; }
-  .hero-sub { max-width: 100%; }
-  .hero-right { padding: 0 28px 60px; }
-  .hero-trust { justify-content: center; }
-  .persona-grid { grid-template-columns: 1fr 1fr; }
-  .eco-hub { grid-template-columns: 1fr; }
+  .nav-logo-img-wrap { height: 44px; }
+
+  /* Hero */
+  .hero { grid-template-columns: 1fr; padding-top: 64px; max-width: 100%; }
+  .hero-left { padding: 52px 24px 36px; align-items: center; text-align: center; }
+  .hero-sub { max-width: 100%; text-align: center; }
+  .hero-right { padding: 0 24px 52px; }
+  .hero-trust { justify-content: center; flex-wrap: wrap; gap: 20px; }
+  .hero-chat { width: 100%; max-width: 460px; }
+
+  /* AI Persona */
+  .persona-feat-grid { grid-template-columns: 1fr; }
+  .persona-feat-item { padding: 28px 24px; }
+
+  /* Workflow */
+  .arch-row { grid-template-columns: 1fr; gap: 28px; }
+  .arch-row-flip { direction: ltr; }
+  .arch-row-divider { margin: 40px 0; }
+
+  /* Ecosystem */
+  .eco-hub { grid-template-columns: 1fr; gap: 32px; }
   .eco-col-left, .eco-col-right { padding: 0; }
-  .eco-hub-center { margin: 0 auto; }
-  .ft-grid { grid-template-columns: 1fr 1fr; }
+  .eco-hub-center { margin: 0 auto; order: -1; }
+  .eco-wrap { padding: 0 24px; }
+
+  /* Sections */
+  .sec { padding: 72px 24px; }
+  .eco-section { padding: 72px 0 80px; }
 }
+
+/* ═══════════════════════════════════
+   RESPONSIVE — MOBILE (≤640px)
+═══════════════════════════════════ */
 @media(max-width:640px){
-  .persona-grid { grid-template-columns: 1fr; }
-  .ft-grid { grid-template-columns: 1fr; }
-  .ft-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .cta-in { padding: 48px 28px; }
+  /* Nav */
+  nav { padding: 0 16px; height: 60px; }
+  .nav-logo-img-wrap { height: 38px; }
   .lang-sw { display: none; }
-  .login-card { padding: 32px 24px 28px; }
-  .login-logo-img-wrap img { height: 40px; }
-  .hero-trust { flex-direction: column; align-items: center; gap: 16px; }
+  .btn-nav-primary { padding: 8px 16px; font-size: 13px; }
+
+  /* Hero */
+  .hero { padding-top: 60px; }
+  .hero-left { padding: 40px 16px 28px; }
+  .hero-headline { font-size: clamp(36px, 9vw, 52px); letter-spacing: -1.5px; }
+  .hero-sub { font-size: 15px; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 10px; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+  .hero-right { padding: 0 16px 40px; }
+  .hero-chat { max-width: 100%; }
+  .hero-trust { flex-direction: column; align-items: center; gap: 16px; padding-top: 24px; margin-top: 28px; }
   .hero-trust-divider { width: 40px; height: 1px; }
+  .hero-trust-num { font-size: 20px; }
+
+  /* Section headers */
+  .sec-h2 { font-size: clamp(28px, 7.5vw, 42px); letter-spacing: -1.2px; }
+  .sec-body { font-size: 15px; margin-bottom: 40px; }
+  .sec-eyebrow { font-size: 10px; }
+
+  /* AI Persona */
+  .persona-feat-item { flex-direction: column; gap: 16px; padding: 24px 20px; }
+  .persona-feat-icon { width: 44px; height: 44px; }
+  .persona-feat-title { font-size: 18px; }
+  .persona-feat-desc { font-size: 13.5px; }
+
+  /* Workflow */
+  .arch-row { gap: 20px; }
+  .arch-row-title { font-size: clamp(22px, 6vw, 32px); }
+  .arch-row-desc { font-size: 14px; }
+  .arch-row-tags { gap: 6px; }
+  .arch-row-tag { font-size: 11px; padding: 4px 10px; }
+  .arch-row-divider { margin: 28px 0; }
+  .arch-tabs { gap: 6px; }
+  .arch-tab { padding: 8px 14px; font-size: 11.5px; }
+  #rag-architecture { padding: 60px 0 !important; }
+  #rag-architecture > div { padding: 0 16px !important; }
+
+  /* Ecosystem */
+  .eco-section { padding: 60px 0 68px; }
+  .eco-wrap { padding: 0 16px; }
+  .eco-hub { gap: 24px; margin-top: 40px; }
+  .eco-card { padding: 14px 16px; gap: 12px; }
+  .eco-card-icon { width: 36px; height: 36px; font-size: 15px; }
+  .eco-card-name { font-size: 13px; }
+  .eco-card-desc { font-size: 11.5px; }
+  .eco-hub-node { width: 100px; height: 100px; }
+  .eco-hub-ring { width: 100px; height: 100px; }
+
+  /* CTA */
+  .cta-section { padding: 32px 16px; }
+  .cta-card { padding: 48px 20px; border-radius: 18px; }
+  .cta-headline { font-size: clamp(22px, 7vw, 36px); margin-bottom: 28px; }
+  .cta-btn-primary { padding: 14px 36px; font-size: 12px; }
+
+  /* Footer */
+  .ft-main { padding: 48px 20px 36px; }
+  .ft-logo { height: 70px; }
+  .ft-bottom-strip { padding: 18px 20px; }
+  .ft-legal { font-size: 11px; }
+
+  /* Login */
+  .login-card { padding: 28px 20px 24px; border-radius: 24px; }
+  .login-logo-img-wrap img { height: 40px; }
+  .login-logo-img-wrap { padding: 10px 18px; }
+
+  /* AI Persona section */
+  #ai_persona { padding: 60px 0 !important; }
+  #ai_persona > div { padding: 0 16px !important; }
+  #ai_persona .reveal { margin-bottom: 40px !important; }
+
+  /* Misc */
+  .trust-item { padding: 0 28px; }
+  .t-num { font-size: 18px; }
+  .t-label { font-size: 11.5px; }
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤390px)
+═══════════════════════════════════ */
+@media(max-width:390px){
+  .hero-headline { font-size: 32px; }
+  .sec-h2 { font-size: 26px; }
+  .eco-hub { gap: 20px; }
+  .eco-card { flex-direction: column; gap: 10px; }
+  .eco-card-icon { align-self: flex-start; }
+  .cta-headline { font-size: 22px; }
+  .arch-tab-num { display: none; }
 }
 </style>
 </head>
@@ -1009,7 +1101,7 @@ nav ul, nav li { position: static !important; }
       <button class="l-btn" data-lang="bm" onclick="setLanguage('bm')">BM</button>
       <button class="l-btn" data-lang="ch" onclick="setLanguage('ch')">CH</button>
     </div>
-    <button class="btn-nav-primary" onclick="openAuth('signup')" data-i18n="nav-try">CHAT NOW</button>
+    <a href="https://msme.ai.pepperlabs.my" target="_blank" rel="noopener" class="btn-nav-primary" data-i18n="nav-try">CHAT NOW</a>
   </div>
 </nav>
 
@@ -1033,7 +1125,7 @@ nav ul, nav li { position: static !important; }
     </p>
 
     <div class="hero-actions">
-      <a href="http://127.0.0.1:8000"><button class="btn-primary" data-i18n="hero-btn1">CHAT NOW</button></a>
+      <a href="https://msme.ai.pepperlabs.my" target="_blank" rel="noopener"><button class="btn-primary" data-i18n="hero-btn1">CHAT NOW</button></a>
       <button class="btn-secondary" onclick="openAuth('login')">See how it works</button>
     </div>
   </div>
@@ -1318,7 +1410,7 @@ nav ul, nav li { position: static !important; }
   <div class="cta-inner">
     <div class="cta-card">
       <h2 class="cta-headline">Jom, get started<br>with AI Rakan Niaga!</h2>
-      <a href="http://127.0.0.1:8000" class="cta-btn-primary">CHAT NOW</a>
+      <a href="https://msme.ai.pepperlabs.my" target="_blank" rel="noopener" class="cta-btn-primary">CHAT NOW</a>
     </div>
   </div>
 </section>
